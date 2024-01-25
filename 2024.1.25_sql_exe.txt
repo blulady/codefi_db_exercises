@@ -1,0 +1,59 @@
+    
+INSERT INTO Customers(CustomerID, Name, Email)
+VALUES(1, 'Alice Johnson', 'alice.johnson@email.com'),
+    (2, 'Bob Smith', 'bob.smith@email.com'),
+    (3, 'Charlie Brown', 'charlie.brown@gmail.com ');
+    
+
+-- exercise 2
+
+UPDATE Customers
+SET Email = 'bob.smith@newdomain.com'
+WHERE CustomerID = 2;
+
+SELECT * FROM Customers;
+
+-- exercise 3
+
+DELETE FROM Customers
+WHERE CustomerID = 3;
+
+SELECT * FROM Customers;
+
+-- exercise 4
+
+CREATE TABLE Books(
+    BookID int primary key,
+    Title varchar(255),
+    Author varchar(255));
+    
+CREATE TABLE Orders(
+    OrderID int primary key,
+    Quantity int,
+    BookID int,
+    CustomerID int);
+    
+INSERT INTO Books(BookID, Title, Author)
+VALUES(1, 'Neuromancer', 'William Gibson'),
+    (2, 'Eye of the World', 'Robert Jordan'),
+    (3, 'Children of Time', 'Tchovsky');
+    
+INSERT INTO Orders(OrderID, Quantity, BookID, CustomerID)
+VALUES(1, 30, 1, 1),
+    (2, 100, 2,2),
+    (3, 200, 3, 3);
+    
+SELECT Name, Title, Quantity FROM Orders INNER JOIN Books ON Orders.BookID = Books.BookID INNER JOIN Customers ON Customers.CustomerID = Orders.CustomerID;
+
+-- exercise 5
+
+CREATE TABLE Students(
+    StudentID int primary key,
+    Name varchar(255));
+    
+CREATE TABLE Grades(
+    -- GradeID int primary key,
+    StudentID int,
+    Subject varchar(255),
+    Grade varchar(255)
+    );
